@@ -39,17 +39,36 @@ function ExpenseForm({ onAddExpense }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} aria-label="Add expense form">
       <h2>Add Expense</h2>
-      <input placeholder="Expense name" value={name}
-        onChange={(e) => setName(e.target.value)} />
-      {errors.name && <span className="error">{errors.name}</span>}
 
-      <input type="number" placeholder="Amount" value={amount}
-        onChange={(e) => setAmount(e.target.value)} />
-      {errors.amount && <span className="error">{errors.amount}</span>}
+      <label htmlFor="name">Expense Name</label>
+      <input
+        id="name"
+        placeholder="Expense name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        aria-describedby="name-error"
+      />
+      {errors.name && <span id="name-error" className="error" role="alert">{errors.name}</span>}
 
-      <select value={category} onChange={(e) => setCategory(e.target.value)}>
+      <label htmlFor="amount">Amount</label>
+      <input
+        id="amount"
+        type="number"
+        placeholder="Amount"
+        value={amount}
+        onChange={(e) => setAmount(e.target.value)}
+        aria-describedby="amount-error"
+      />
+      {errors.amount && <span id="amount-error" className="error" role="alert">{errors.amount}</span>}
+
+      <label htmlFor="category">Category</label>
+      <select
+        id="category"
+        value={category}
+        onChange={(e) => setCategory(e.target.value)}
+      >
         <option>Food</option>
         <option>Transport</option>
         <option>Shopping</option>
@@ -57,9 +76,15 @@ function ExpenseForm({ onAddExpense }) {
         <option>Other</option>
       </select>
 
-      <input type="date" value={date}
-        onChange={(e) => setDate(e.target.value)} />
-      {errors.date && <span className="error">{errors.date}</span>}
+      <label htmlFor="date">Date</label>
+      <input
+        id="date"
+        type="date"
+        value={date}
+        onChange={(e) => setDate(e.target.value)}
+        aria-describedby="date-error"
+      />
+      {errors.date && <span id="date-error" className="error" role="alert">{errors.date}</span>}
 
       <button type="submit">Add Expense</button>
     </form>
