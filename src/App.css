@@ -87,3 +87,9 @@ li button:hover {
   margin-bottom: 16px;
   color: #27ae60;
 }
+
+.error {
+  color: #e74c3c;
+  font-size: 12px;
+  margin-top: -8px;
+}
