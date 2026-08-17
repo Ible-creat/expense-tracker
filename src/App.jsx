@@ -26,11 +26,13 @@ function App() {
     <div className="app">
       <h1>Expense Tracker</h1>
       <ExpenseForm onAddExpense={handleAddExpense} />
-      <ExpenseFilter
-        selectedCategory={selectedCategory}
-        onFilterChange={setSelectedCategory}
-      />
-      <p>Total: ${total.toFixed(2)}</p>
+      <div className="filter">
+        <ExpenseFilter
+          selectedCategory={selectedCategory}
+          onFilterChange={setSelectedCategory}
+        />
+      </div>
+      <p className="total">Total: ${total.toFixed(2)}</p>
       <ExpenseList
         expenses={filteredExpenses}
         onDelete={handleDelete}
