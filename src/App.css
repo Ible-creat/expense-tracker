@@ -217,3 +217,9 @@ li button:hover {
 .clear-btn:hover {
   background: #ca6f1e;
 }
+
+.expense-count {
+  font-size: 14px;
+  color: #7f8c8d;
+  margin-bottom: 10px;
+}
