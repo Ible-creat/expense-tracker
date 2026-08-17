@@ -188,3 +188,16 @@ li button:hover {
 .modal-actions button:last-child {
   background: #95a5a6;
 }
+
+.list-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.delete-btn {
+  background: #e74c3c;
+}
+
+.delete-btn:hover {
+  background: #c0392b;
+}
