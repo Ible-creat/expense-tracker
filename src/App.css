@@ -201,3 +201,19 @@ li button:hover {
 .delete-btn:hover {
   background: #c0392b;
 }
+
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.clear-btn {
+  background: #e67e22;
+  padding: 8px 14px;
+}
+
+.clear-btn:hover {
+  background: #ca6f1e;
+}
