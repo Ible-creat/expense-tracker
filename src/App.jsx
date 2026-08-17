@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import ExpenseForm from './components/ExpenseForm'
 import ExpenseList from './components/ExpenseList'
 import ExpenseFilter from './components/ExpenseFilter'
+import ExpenseSummary from './components/ExpenseSummary'
 import './App.css'
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
     <div className="app">
       <h1>Expense Tracker</h1>
       <ExpenseForm onAddExpense={handleAddExpense} />
+      <ExpenseSummary expenses={expenses} />
       <div className="filter">
         <ExpenseFilter
           selectedCategory={selectedCategory}
