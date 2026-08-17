@@ -1,12 +1,19 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import ExpenseForm from './components/ExpenseForm'
 import ExpenseList from './components/ExpenseList'
 import ExpenseFilter from './components/ExpenseFilter'
 import './App.css'
 
 function App() {
-  const [expenses, setExpenses] = useState([])
+  const [expenses, setExpenses] = useState(() => {
+    const saved = localStorage.getItem('expenses')
+    return saved ? JSON.parse(saved) : []
+  })
   const [selectedCategory, setSelectedCategory] = useState('All')
+
+  useEffect(() => {
+    localStorage.setItem('expenses', JSON.stringify(expenses))
+  }, [expenses])
 
   function handleAddExpense(expense) {
     setExpenses([...expenses, expense])
