@@ -223,3 +223,14 @@ li button:hover {
   color: #7f8c8d;
   margin-bottom: 10px;
 }
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.search input {
+  flex: 1;
+}

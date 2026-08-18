@@ -14,6 +14,7 @@ function App() {
   const [selectedCategory, setSelectedCategory] = useState('All')
   const [sortBy, setSortBy] = useState('date')
   const [editingExpense, setEditingExpense] = useState(null)
+  const [search, setSearch] = useState('')
 
   useEffect(() => {
     localStorage.setItem('expenses', JSON.stringify(expenses))
@@ -36,9 +37,15 @@ function App() {
     setEditingExpense(null)
   }
 
-  const filteredExpenses = selectedCategory === 'All'
-    ? expenses
-    : expenses.filter((e) => e.category === selectedCategory)
+  function handleClearAll() {
+    if (window.confirm('Are you sure you want to clear all expenses?')) {
+      setExpenses([])
+    }
+  }
+
+  const filteredExpenses = expenses
+    .filter((e) => selectedCategory === 'All' || e.category === selectedCategory)
+    .filter((e) => e.name.toLowerCase().includes(search.toLowerCase()))
 
   const sortedExpenses = [...filteredExpenses].sort((a, b) => {
     if (sortBy === 'date') return new Date(b.date) - new Date(a.date)
@@ -53,6 +60,15 @@ function App() {
       <h1>Expense Tracker</h1>
       <ExpenseForm onAddExpense={handleAddExpense} />
       <ExpenseSummary expenses={expenses} />
+      <div className="search">
+        <label htmlFor="search">Search:</label>
+        <input
+          id="search"
+          placeholder="Search expenses..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+      </div>
       <div className="filter">
         <ExpenseFilter
           selectedCategory={selectedCategory}
@@ -71,7 +87,14 @@ function App() {
           </select>
         </div>
       </div>
-      <p className="total">Total: ${total.toFixed(2)}</p>
+      <div className="list-header">
+        <p className="total">Total: ${total.toFixed(2)}</p>
+        {expenses.length > 0 && (
+          <button className="clear-btn" onClick={handleClearAll}>
+            Clear All
+          </button>
+        )}
+      </div>
       <ExpenseList
         expenses={sortedExpenses}
         onDelete={handleDelete}
