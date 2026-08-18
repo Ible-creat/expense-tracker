@@ -238,3 +238,12 @@ li button:hover {
 .highlight {
   border-left: 4px solid #27ae60;
 }
+
+.footer {
+  text-align: center;
+  margin-top: 40px;
+  padding: 16px;
+  font-size: 13px;
+  color: #95a5a6;
+  border-top: 1px solid #ecf0f1;
+}

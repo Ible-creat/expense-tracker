@@ -4,6 +4,7 @@ import ExpenseList from './components/ExpenseList'
 import ExpenseFilter from './components/ExpenseFilter'
 import ExpenseSummary from './components/ExpenseSummary'
 import EditExpenseModal from './components/EditExpenseModal'
+import Footer from './components/Footer'
 import './App.css'
 
 function App() {
@@ -108,6 +109,7 @@ function App() {
           onClose={() => setEditingExpense(null)}
         />
       )}
+      <Footer />
     </div>
   )
 }
