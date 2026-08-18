@@ -1,4 +1,8 @@
-function ExpenseList({ expenses, onDelete, onEdit }) {
+function ExpenseList({ expenses, onDelete, onEdit, isFiltered }) {
+  if (expenses.length === 0 && isFiltered) {
+    return <p role="status">No expenses match your search or filter.</p>
+  }
+
   if (expenses.length === 0) {
     return <p role="status">No expenses yet. Add one above.</p>
   }

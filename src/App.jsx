@@ -99,6 +99,7 @@ function App() {
         expenses={sortedExpenses}
         onDelete={handleDelete}
         onEdit={handleEdit}
+        isFiltered={search !== '' || selectedCategory !== 'All'}
       />
       {editingExpense && (
         <EditExpenseModal
