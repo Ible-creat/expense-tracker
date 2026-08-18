@@ -234,3 +234,7 @@ li button:hover {
 .search input {
   flex: 1;
 }
+
+.highlight {
+  border-left: 4px solid #27ae60;
+}
