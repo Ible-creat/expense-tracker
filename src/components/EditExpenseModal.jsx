@@ -1,10 +1,18 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 function EditExpenseModal({ expense, onSave, onClose }) {
   const [name, setName] = useState(expense.name)
   const [amount, setAmount] = useState(expense.amount)
   const [category, setCategory] = useState(expense.category)
   const [date, setDate] = useState(expense.date)
+
+  useEffect(() => {
+    function handleKeyDown(e) {
+      if (e.key === 'Escape') onClose()
+    }
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [onClose])
 
   function handleSubmit(e) {
     e.preventDefault()
@@ -13,7 +21,12 @@ function EditExpenseModal({ expense, onSave, onClose }) {
   }
 
   return (
-    <div className="modal-overlay" role="dialog" aria-label="Edit expense">
+    <div
+      className="modal-overlay"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Edit expense"
+    >
       <div className="modal">
         <h2>Edit Expense</h2>
         <form onSubmit={handleSubmit}>
